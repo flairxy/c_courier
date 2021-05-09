@@ -1,0 +1,25 @@
+.b-primary {
+    background: #131C32 !important;
+}
+
+.b-active {
+    background-color: #131C32 !important;
+    color: #fff !important
+}
+
+.b-info {
+    background: rgb(20, 70, 153);
+
+}
+
+.b-earth {
+    color: rgb(20, 70, 153);
+}
+
+.b-default {
+    background: rgb(240, 242, 247) !important;
+}
+
+.b-black {
+    color: #000 !important;
+}
