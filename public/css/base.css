@@ -7,7 +7,7 @@
 }
 
 a.cl1:hover {
-    color: #3f9ce8 !important;
+    color: #030103!important;
     /* color: #ef4a35 !important; */
     text-decoration: none !important
 }
@@ -58,7 +58,7 @@ a.cl2:hover {
 .my-btn {
     /* background-image: -webkit-gradient(linear, right bottom, left top, from(#ff8a00), to(#e52e71)); */
     /* background-image: linear-gradient(to top left, #ff8a00, #e52e71); */
-    background-color: rgb(20, 70, 153) !important;
+    background-color: #240727 !important;
     position: relative;
     color: #fff;
     font-weight: 500;

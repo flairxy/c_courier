@@ -12725,11 +12725,11 @@ hr {
 }
 
 .background-blue {
-    background-color: #00539B
+    background-color: #240727
 }
 
 .background-blue--alpha {
-    background: #00539B;
+    background: #240727;
     background: rgba(0, 83, 155, .6)
 }
 
@@ -14156,7 +14156,7 @@ table.scfCheckBoxListBorder label {
 .text-label,
 .topics__title,
 .wishlist-listing__quantity-label {
-    color: #00539B;
+    color: #240727;
     font-size: 14px;
     text-transform: uppercase
 }
@@ -18739,7 +18739,7 @@ table.scfCheckBoxListBorder label {
 }
 
 .footer {
-    background-color: #002B5C;
+    background-color: #240727;
     color: #FFF;
     padding: 4rem 0
 }
@@ -19189,18 +19189,18 @@ table.scfCheckBoxListBorder label {
 .header-navigation-folder__link:hover,
 .header-navigation-link__link:focus,
 .header-navigation-link__link:hover {
-    border-bottom-color: #00539B;
+    border-bottom-color: #240727;
     outline: 0
 }
 
 .header-navigation-link--active__link {
-    border-bottom-color: #00539B
+    border-bottom-color: #240727
 }
 
 .header-navigation-folder__items {
     background-color: #FFF;
     border: 1px solid #F4F4F4;
-    border-top: 5px solid #00539B;
+    border-top: 5px solid #240727;
     display: none;
     left: 50%;
     list-style: none;

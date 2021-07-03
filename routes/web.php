@@ -14,6 +14,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminShipmentController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\User\ApplicationController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\ShipmentController;
 use App\Models\Shipment;
@@ -22,7 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/track-your-shipment', 'PagesController@track')->name('track-ur-shipment');
 
 
 Route::get('/track-shipment', 'TrackShipmentController@index')->name('track-shipment');
@@ -60,14 +60,12 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.', 'middleware' => ['admin'
 
 Route::group(['namespace' => 'User', 'middleware' => ['auth', 'user'], 'as' => 'user.'], function () {
     Route::get('/dashboard',  [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/application',  [DashboardController::class, 'getApplication']);
     Route::group(['prefix' => 'user'], function () {
-        Route::group(['prefix' => 'shipments', 'as' => 'shipments.'], function () {
-            Route::get('/', [ShipmentController::class, 'index'])->name('index');
-            Route::get('create',  [ShipmentController::class, 'create'])->name('create');
-            Route::post('create',  [ShipmentController::class, 'store'])->name('store');
-            Route::get('edit/{id}',  [ShipmentController::class, 'edit'])->name('edit');
-            Route::post('edit/{id}',  [ShipmentController::class, 'update'])->name('update');
-            Route::post('payment/callback',  [ShipmentController::class, 'callback'])->name('callback');
+        Route::group(['prefix' => 'application','as' => 'application.'], function () {
+            Route::post('apply', [ApplicationController::class, 'store']);
+            Route::post('apply/update/{id}', [ApplicationController::class, 'update']);
+            Route::post('payment/confirm/{id}', [ApplicationController::class, 'confirmPayment']);
         });
     });
 });

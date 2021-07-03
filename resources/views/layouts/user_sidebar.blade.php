@@ -26,7 +26,7 @@
     <div id="app">
         <div id="page-container"
             class="sidebar-o sidebar-inverse  side-scroll page-header-modern main-content-boxed enable-page-overlay">
-            <nav id="sidebar" data-simplebar="init" style="background-color: #1b163a;">
+            <nav id="sidebar" data-simplebar="init" style="background-color: #240727;">
                 <div class="simplebar-track vertical" style="visibility: visible;">
                     <div class="simplebar-scrollbar" style="visibility: visible; top: 0px; height: 514px;"></div>
                 </div>
@@ -61,9 +61,8 @@
                                     <!-- Logo -->
                                     <div class="content-header-item">
                                         <a class="link-effect font-w700" href="/">
-                                            <i class="fa fa-car text-primary"></i>
-                                            <span class="font-size-xl text-dual-primary-dark">Cou</span><span
-                                                class="font-size-xl text-primary">rier</span>
+                                            <span class="font-size-xl text-dual-primary-dark">IA</span><span
+                                                class="font-size-xl text-primary">MS</span>
                                         </a>
                                     </div>
                                     <!-- END Logo -->
@@ -84,12 +83,7 @@
                                             </span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a class="nav-menu" d href="{{ route('user.shipments.index') }}">
-                                            <i class="si si-bar-chart bky-color"></i>
-                                            <span class="sidebar-mini-hide">Shipments
-                                        </a>
-                                    </li>
+
 
 
                                     <li>
@@ -129,7 +123,7 @@
             <footer id="page-footer" class="opacity-0">
                 <div class="content py-20 font-size-xs clearfix">
                     <div class="float-left">
-                        <a class="font-w600" href="#" target="_blank">Courier</a> &copy; <span
+                        <a class="font-w600" href="#" target="_blank">IAMS</a> &copy; <span
                             class="js-year-copy">2021</span>
                     </div>
                 </div>
@@ -142,6 +136,7 @@
 
 <script src="{{ asset('js/codebase.app.js') }}"></script>
 <script src="{{ asset('js/laravel.app.js') }}"></script>
+<script src="{{ asset('js/vue-app.js') }}"></script>
 @yield('script')
 
 </html>

@@ -8,7 +8,7 @@
     <title>{{config('app.name')}} | @yield('title') </title>
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content=" Courier " />
+    <meta property="og:title" content=" IAMS " />
     <meta property="og:url" content="/" />
 
 
@@ -36,21 +36,13 @@
             <div class="header__left">
 
 
-                <a href="/" class="logo"><img
-                        src="-/media/assets/worldcourier/english/images/homepage/world_courier_cmykfe40.png?bc=ffffff&amp;h=60&amp;la=en&amp;w=250&amp;hash=6DAEDF7A3341593F40634FDA70C3889ACD86B7D2"
-                        class="logo__image" alt=" Courier Logo" width="250" height="60" /></a>
+                <a href="/" class="logo"></a>
             </div>
             <div class="header__right">
 
 
                 <nav class="header-navigation">
                     <ul class="header-navigation__items">
-
-
-                        <li class="header-navigation-link">
-                            <div class="header-navigation-link__frame"><a class="header-navigation-link__link"
-                                    href="{{ route('track-ur-shipment') }}">Tracking</a></div>
-                        </li>
 
                         @guest
                         <li class="header-navigation-link">
@@ -101,12 +93,6 @@
 
                             <li class="small-header-navigation-link">
                                 <div class="small-header-navigation-link__frame"><a
-                                        class="small-header-navigation-link__link"
-                                        href="{{ route('track-ur-shipment') }}">Tracking</a></div>
-                            </li>
-
-                            <li class="small-header-navigation-link">
-                                <div class="small-header-navigation-link__frame"><a
                                         class="small-header-navigation-link__link" href="{{ route('login') }}">Login</a>
                                 </div>
                             </li>
@@ -119,51 +105,7 @@
                         </ul>
                     </div>
                 </nav>
-                <nav class="small-top-hat">
-                    <div class="small-top-hat__inner">
 
-
-                        <div class="small-top-hat-languages">
-                            <a href="#small-languages" class="small-top-hat-languages__button"
-                                aria-controls="small-languages" data-accordion='{
-                   "name": "small-top-hat-languages",
-                   "linkClass": "small-top-hat-languages__button--expanded",
-                   "itemClass": "small-top-hat-languages__list--expanded"
-                }'>
-                                English
-                            </a>
-                            {{-- <div id="small-languages" class="small-top-hat-languages__list">
-                                <a class="small-top-hat-language" href="pt.html" rel="alternate" hreflang="pt-PT">
-                                    Portugu&#234;s
-                                </a>
-                                <a class="small-top-hat-language" href="es.html" rel="alternate" hreflang="es-ES">
-                                    Espa&#241;ol
-                                </a>
-                                <a class="small-top-hat-language" href="cn.html" rel="alternate" hreflang="zh-CN">
-                                    中文
-                                </a>
-                                <a class="small-top-hat-language" href="kr.html" rel="alternate" hreflang="ko-KR">
-                                    한국어
-                                </a>
-                                <a class="small-top-hat-language" href="jp.html" rel="alternate" hreflang="ja-JP">
-                                    日本語
-                                </a>
-                                <a class="small-top-hat-language" href="fr.html" rel="alternate" hreflang="fr-FR">
-                                    Fran&#231;ais
-                                </a>
-                                <a class="small-top-hat-language" href="ru.html" rel="alternate" hreflang="ru-RU">
-                                    Pу́сский
-                                </a>
-                                <a class="small-top-hat-language" href="de.html" rel="alternate" hreflang="de-DE">
-                                    Deutsch
-                                </a>
-                                <a class="small-top-hat-language" href="index.html" rel="alternate" hreflang="en">
-                                    English
-                                </a>
-                            </div> --}}
-                        </div>
-                    </div>
-                </nav>
 
             </div>
         </header>
@@ -174,7 +116,7 @@
 
         </main>
 
-        <footer class="footer">
+        <footer class="footer background-blue">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -188,7 +130,7 @@
 
 
                         <div class="copyright">
-                            Copyright ©2021 Courier Services. All Rights Reserved.
+                            Copyright ©2021 IAMS Services. All Rights Reserved.
                         </div>
 
                     </div>
@@ -202,6 +144,5 @@
 
 </body>
 
-<!-- Mirrored from www.worldcourier.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Dec 2020 05:21:28 GMT -->
 
 </html>
