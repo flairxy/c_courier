@@ -7,7 +7,7 @@
         <div class="block">
 
             <div id="app">
-                <Users />
+                <admin-user-application />
             </div>
         </div>
     </div>

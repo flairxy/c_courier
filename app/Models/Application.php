@@ -10,9 +10,9 @@ class Application extends Model
     use SoftDeletes;
     protected $guarded = ['id'];
 
-    const RECEIVED = 1;
+    const APPROVED = 1;
+    const UNAPPROVED = 2;
     const PAID = 1;
-    const NOT_RECEIVED = 0;
 
     public function transaction()
     {

@@ -28,7 +28,7 @@
     <div id="app">
         <div id="page-container"
             class="sidebar-o sidebar-inverse  side-scroll page-header-modern main-content-boxed enable-page-overlay">
-            <nav id="sidebar" data-simplebar="init" style="background-color: #0a0a0a;">
+            <nav id="sidebar" data-simplebar="init" style="background-color: #210129;">
                 <div class="simplebar-track vertical" style="visibility: visible;">
                     <div class="simplebar-scrollbar" style="visibility: visible; top: 0px; height: 514px;"></div>
                 </div>
@@ -61,15 +61,6 @@
                                     </button>
                                     <!-- END Close Sidebar -->
 
-                                    <!-- Logo -->
-                                    <div class="content-header-item py-30">
-                                        <a class="font-w700" href="/">
-                                            <span>
-                                                <img style="width: 90%" src="{{asset('logoWhite.png')}}" alt="logo">
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <!-- END Logo -->
                                 </div>
                                 <!-- END Normal Mode -->
                             </div>
@@ -80,7 +71,7 @@
                             <div class="content-side content-side-full" style="margin-top: 100px !important;">
                                 <ul class="nav-main">
                                     <li>
-                                        <a class="active" href="{{ route('admin.dashboard') }}">
+                                        <a class="active" href="/management/dashboard">
                                             <i class="si si-map bky-color"></i>
                                             <span class="sidebar-mini-hide">
                                                 Dashboard
@@ -88,32 +79,19 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#">
+                                        <a class="active" href="/management/applications">
                                             <i class="si si-bar-chart bky-color"></i>
-                                            <span class="sidebar-mini-hide">Shipments
+                                            <span class="sidebar-mini-hide">
+                                                Applications
+                                            </span>
                                         </a>
-                                        <ul>
-
-                                            <li to="pending-deposits" tag="li">
-                                                <a href="{{ route('admin.shipments.pending') }}">Pending</a>
-                                            </li>
-
-                                            <li to="pending-withdrawals" tag="li">
-                                                <a href="{{ route('admin.shipments.delivered') }}">Delivered</a>
-                                            </li>
-                                        </ul>
                                     </li>
+
 
                                     <li>
                                         <a class="av-menu" href="{{ route('admin.users.index') }}">
                                             <i class="si si-users bky-color"></i>
                                             Users
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="av-menu" href="{{ route('admin.managers.index') }}">
-                                            <i class="si si-users bky-color"></i>
-                                            Managers
                                         </a>
                                     </li>
                                     <li>
@@ -166,6 +144,7 @@
 
 <script src="{{ asset('js/codebase.app.js') }}"></script>
 <script src="{{ asset('js/laravel.app.js') }}"></script>
+<script src="{{ asset('js/vue-app.js') }}"></script>
 @yield('script')
 
 </html>

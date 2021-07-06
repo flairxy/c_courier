@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Shipment;
+use App\Models\Application;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -19,15 +19,13 @@ class AdminController extends Controller
 
     public function index()
     {
-        $shipments = Shipment::all();
+        $applications = Application::all();
         return view('admin.index', [
-            'total_shipments' => count($shipments),
-            'total_pending_shipments' => count($shipments->where('is_received', Shipment::NOT_RECEIVED)->where('has_paid', Shipment::PAID)),
+            'total_applications' => count($applications),
+            'total_unapproved_applications' => count($applications->where('is_approved', Application::UNAPPROVED)->where('is_paid', Application::PAID)),
+            'total_approved_applications' => count($applications->where('is_approved', Application::APPROVED)->where('is_paid', Application::PAID)),
             'revenue' => Transaction::whereStatus(true)->sum('amount'),
-            'total_delivered_shipments' => count($shipments->where('is_received', Shipment::RECEIVED)),
             'users' => count(User::where('is_admin', false)->get())
         ]);
-
     }
-
 }

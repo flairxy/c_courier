@@ -42,7 +42,7 @@
                             />
                         </td>
                         <td class="font-w600">
-                            {{ application.transaction.reference }}
+                            {{ application.reference }}
                         </td>
 
                         <td>
@@ -609,17 +609,21 @@ export default {
             }
         },
         callback: async function(response) {
-            if (
-                response.message === "Approved" &&
-                response.status === "success"
-            ) {
-                this.paymentCompleted = true;
-                await axios.post(
-                    `/user/application/payment/confirm/${this.application.id}`,
-                    { reference: response.reference }
-                );
-            } else {
-                this.paymentMessage = "Payment failed. Try again";
+            try {
+                if (
+                    response.message === "Approved" &&
+                    response.status === "success"
+                ) {
+                    this.paymentCompleted = true;
+                    await axios.post(
+                        `/user/application/payment/confirm/${this.application.id}`,
+                        { reference: response.reference }
+                    );
+                } else {
+                    this.paymentMessage = "Payment failed. Try again";
+                }
+            } catch (error) {
+                console.log(error);
             }
         },
         close: function() {
@@ -769,22 +773,26 @@ export default {
             window.location.reload();
         },
         async getApplication() {
-            let response = await axios.get("/application");
-            let application = response.data;
-            this.application = application;
-            this.ffirstname = application.ffirstname;
-            this.firstname = application.firstname;
-            this.lastname = application.lastname;
-            this.flastname = application.flastname;
-            this.othername = application.othername;
-            this.fphone = application.fphone;
-            this.phone = application.phone;
-            this.dob = application.dob;
-            this.gender = application.gender;
-            this.passport = application.passport;
-            this.certificate = application.certificate;
-            this.image_url = `/passports/${application.passport}`;
-            this.certificate_url = `/certificates/${application.certificate}`;
+            try {
+                let response = await axios.get("/application");
+                let application = response.data;
+                this.application = application;
+                this.ffirstname = application.ffirstname;
+                this.firstname = application.firstname;
+                this.lastname = application.lastname;
+                this.flastname = application.flastname;
+                this.othername = application.othername;
+                this.fphone = application.fphone;
+                this.phone = application.phone;
+                this.dob = application.dob;
+                this.gender = application.gender;
+                this.passport = application.passport;
+                this.certificate = application.certificate;
+                this.image_url = `/passports/${application.passport}`;
+                this.certificate_url = `/certificates/${application.certificate}`;
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
     created() {

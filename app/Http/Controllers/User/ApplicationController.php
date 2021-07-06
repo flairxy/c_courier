@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Image;
 
 class ApplicationController extends Controller
@@ -32,6 +33,7 @@ class ApplicationController extends Controller
 
         $user = Auth::user();
         $data = $request->all();
+        $data['reference'] = Str::random(11);
         $data['user_id'] = $user->id;
         if ($request->hasFile('passport')) {
             $image = $request->file('passport');

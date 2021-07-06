@@ -12,57 +12,38 @@
 */
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AdminShipmentController;
-use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\AdminApplicationController;
+use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\User\ApplicationController;
 use App\Http\Controllers\User\DashboardController;
-use App\Http\Controllers\User\ShipmentController;
-use App\Models\Shipment;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-Route::get('/track-shipment', 'TrackShipmentController@index')->name('track-shipment');
-Route::post('/track', 'TrackShipmentController@track')->name('track');
-Route::post('/notify/{id}', 'Admin\ShipmentController@notify')->name('shipment-notify');
-Route::post('/invoice', ['uses' => 'TrackShipmentController@printInvoice'])->name('admin.download');
-
 Route::group(['namespace' => 'Admin', 'as' => 'admin.', 'middleware' => ['admin'], 'prefix' => 'management'], function () {
     Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
-    Route::group(['prefix' => 'shipments', 'as' => 'shipments.'], function () {
-        Route::get('/', [AdminShipmentController::class, 'index'])->name('index');
-        Route::get('pending', [AdminShipmentController::class, 'pending'])->name('pending');
-        Route::get('delivered', [AdminShipmentController::class, 'delivered'])->name('delivered');
-        Route::get('edit/{id}',  [AdminShipmentController::class, 'edit'])->name('edit');
-        Route::post('dispatch/{id}',  [AdminShipmentController::class, 'dispatch'])->name('dispatch');
-        Route::post('pickup/{id}',  [AdminShipmentController::class, 'pickup'])->name('pickup');
-        Route::post('isDelivered/{id}',  [AdminShipmentController::class, 'isDelivered'])->name('isDelivered');
-        Route::post('delete/{id}',  [AdminShipmentController::class, 'destroy'])->name('destroy');
+    Route::group(['prefix' => 'applications'], function () {
+        Route::get('/', [AdminApplicationController::class, 'index']);
+        Route::get('/edit', [AdminApplicationController::class, 'edit']);
+        Route::get('/all', [AdminApplicationController::class, 'applications']);
+        Route::get('/{id}', [AdminApplicationController::class, 'fetchApplication']);
+        Route::post('update/{id}', [AdminApplicationController::class, 'update']);
+        Route::delete('delete/{id}',  [AdminApplicationController::class, 'delete']);
     });
-    Route::group(['prefix' => 'user', 'as' => 'users.'], function () {
-        Route::get('/', [UsersController::class, 'index'])->name('index');
-        Route::post('delete/{id}',  [UsersController::class, 'destroy'])->name('destroy');
-    });
-    Route::group(['prefix' => 'manager', 'as' => 'managers.'], function () {
-        Route::get('/', [UsersController::class, 'managers'])->name('index');
-        Route::get('/create', [UsersController::class, 'createManager'])->name('create');
-        Route::post('/store', [UsersController::class, 'storeManager'])->name('store');
-        Route::get('/edit/{id}', [UsersController::class, 'editManager'])->name('edit');
-        Route::post('/update/{id}', [UsersController::class, 'updateManager'])->name('update');
-        Route::post('delete/{id}',  [UsersController::class, 'destroy'])->name('destroy');
+    Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+        Route::get('/', [AdminUsersController::class, 'index'])->name('index');
+        Route::get('/all', [AdminUsersController::class, 'getUsers']);
+        Route::delete('delete/{id}',  [AdminUsersController::class, 'delete']);
     });
 });
-
 
 
 Route::group(['namespace' => 'User', 'middleware' => ['auth', 'user'], 'as' => 'user.'], function () {
     Route::get('/dashboard',  [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/application',  [DashboardController::class, 'getApplication']);
     Route::group(['prefix' => 'user'], function () {
-        Route::group(['prefix' => 'application','as' => 'application.'], function () {
+        Route::group(['prefix' => 'application', 'as' => 'application.'], function () {
             Route::post('apply', [ApplicationController::class, 'store']);
             Route::post('apply/update/{id}', [ApplicationController::class, 'update']);
             Route::post('payment/confirm/{id}', [ApplicationController::class, 'confirmPayment']);
