@@ -13,9 +13,11 @@
             </p>
             <p class="mb-30" v-if="application.is_paid === 1">
                 {{
-                    application.is_approved === 1
+                    application.is_approved === 0
+                        ? "You have an application awaiting approval"
+                        : application.is_approved === 1
                         ? "Your application has been approved."
-                        : " You have an application awaiting approval."
+                        : " Your application has been rejected. You do not meet the criteria for approval."
                 }}
             </p>
         </div>
@@ -51,8 +53,13 @@
                                 class="badge badge-warning"
                                 >PENDING</span
                             >
-                            <span v-else class="badge badge-success"
+                            <span
+                                v-if="application.is_approved === 1"
+                                class="badge badge-success"
                                 >APPROVED</span
+                            >
+                            <span v-else class="badge badge-danger"
+                                >REJECTED</span
                             >
                         </td>
 
@@ -63,6 +70,11 @@
                                     "dd MMM, yyyy"
                                 )
                             }}
+                        </td>
+                        <td v-if="application.is_approved === 1">
+                            <a href="/certificate/preview" class="btn">
+                                <i class="si si-eye"></i> Preview</a
+                            >
                         </td>
                     </tr>
                 </tbody>

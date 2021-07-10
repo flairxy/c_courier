@@ -16,6 +16,8 @@ use App\Http\Controllers\Admin\AdminApplicationController;
 use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\User\ApplicationController;
 use App\Http\Controllers\User\DashboardController;
+use App\Models\Application;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,6 +43,10 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.', 'middleware' => ['admin'
 
 Route::group(['namespace' => 'User', 'middleware' => ['auth', 'user'], 'as' => 'user.'], function () {
     Route::get('/dashboard',  [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/certificate/preview', function () {
+        $detail = Application::whereUserId(Auth::user()->id)->first();
+        return view('include.certificate', ['detail' => $detail]);
+    });
     Route::get('/application',  [DashboardController::class, 'getApplication']);
     Route::group(['prefix' => 'user'], function () {
         Route::group(['prefix' => 'application', 'as' => 'application.'], function () {

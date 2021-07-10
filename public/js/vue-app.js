@@ -2514,6 +2514,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -64659,9 +64671,11 @@ var render = function() {
                 _vm._v(
                   "\n            " +
                     _vm._s(
-                      _vm.application.is_approved === 1
+                      _vm.application.is_approved === 0
+                        ? "You have an application awaiting approval"
+                        : _vm.application.is_approved === 1
                         ? "Your application has been approved."
-                        : " You have an application awaiting approval."
+                        : " Your application has been rejected. You do not meet the criteria for approval."
                     ) +
                     "\n        "
                 )
@@ -64697,8 +64711,14 @@ var render = function() {
                     ? _c("span", { staticClass: "badge badge-warning" }, [
                         _vm._v("PENDING")
                       ])
-                    : _c("span", { staticClass: "badge badge-success" }, [
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.application.is_approved === 1
+                    ? _c("span", { staticClass: "badge badge-success" }, [
                         _vm._v("APPROVED")
+                      ])
+                    : _c("span", { staticClass: "badge badge-danger" }, [
+                        _vm._v("REJECTED")
                       ])
                 ]),
                 _vm._v(" "),
@@ -64713,7 +64733,11 @@ var render = function() {
                       ) +
                       "\n                    "
                   )
-                ])
+                ]),
+                _vm._v(" "),
+                _vm.application.is_approved === 1
+                  ? _c("td", [_vm._m(1)])
+                  : _vm._e()
               ])
             ])
           ])
@@ -65770,6 +65794,16 @@ var staticRenderFns = [
         _c("th", [_vm._v("Date")])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "btn", attrs: { href: "/certificate/preview" } },
+      [_c("i", { staticClass: "si si-eye" }), _vm._v(" Preview")]
+    )
   }
 ]
 render._withStripped = true
